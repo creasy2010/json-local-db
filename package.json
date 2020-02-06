@@ -1,0 +1,19 @@
+{
+  "name": "json-local-db",
+  "version": "1.0.0",
+  "description": "json格式内容本地存储",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/creasy2010/json-local-db.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/creasy2010/json-local-db/issues"
+  },
+  "homepage": "https://github.com/creasy2010/json-local-db#readme"
+}
