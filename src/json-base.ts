@@ -6,10 +6,10 @@
  * @coder.yang2010@gmail.com
  * @Date    2020/1/29
  **/
-import {baseDir} from  './const';
 import {join} from 'path';
 import {writeJsonSync,readJSONSync,existsSync, ensureFile,ensureFileSync, ensureDir, readJSON} from "fs-extra";
 import {debounce} from  'lodash';
+import {getBaseDir} from './const';
 import {v1} from 'uuid';
 
 
@@ -20,7 +20,7 @@ export class JsonBase<T=any>{
   _defautValue;
 
   constructor(key: string,defaultValue:T) {
-    this.fileLoc = join(baseDir, key+".json");
+    this.fileLoc = join(getBaseDir(), key+".json");
     this._defautValue=defaultValue;
     this.init();
   }
