@@ -1,8 +1,9 @@
 import {join} from 'path';
 import {writeJsonSync,readJSONSync,existsSync, ensureFile,ensureFileSync, ensureDir, readJSON} from "fs-extra";
-import {debounce} from  'lodash';
+import {debounce,cloneDeep} from  'lodash';
 import {v1} from 'uuid';
 import {getBaseDir} from './const';
+import produce from "immer"
 
 /**
  * @desc
@@ -18,6 +19,8 @@ export class ArrayBase<T extends IBase> {
   fileLoc: string;
 
   db:T[];
+
+
 
   constructor(key: string) {
     this.fileLoc = join(getBaseDir(), key+".json");
@@ -38,6 +41,15 @@ export class ArrayBase<T extends IBase> {
     });
   }
 
+  public findIndex(id:string):number{
+    for (let i = 0, iLen = this.db.length; i < iLen; i++) {
+      let item = this.db[i];
+      if(item.id===id){
+        return i;
+      }
+    }
+    return -1;
+  }
 
   public async findById(id:string){
     // @ts-ignore
@@ -58,19 +70,26 @@ export class ArrayBase<T extends IBase> {
   }
 
   del(id:string) {
-    // @ts-ignore
     this.db=this.db.filter((item)=>item.id!==id);
     this.dump();
   }
 
   async update(id,updateItem:Partial<T>) {
-    let item = await this.findById(id);
-    for (let updateItemKey in updateItem) {
-      if(item.hasOwnProperty(updateItemKey)){
-        item[updateItemKey] = updateItem[updateItemKey];
+
+    let index =  this.findIndex(id);
+
+    let item  = this.db[index];
+    item = produce<T>(item, draftState => {
+      for (let updateItemKey in updateItem) {
+        if(draftState.hasOwnProperty(updateItemKey)){
+          //@ts-ignore
+          draftState[updateItemKey] = updateItem[updateItemKey];
+        }
       }
-    }
-    item.updateTime =Date.now();
+      draftState.updateTime =Date.now();
+    });
+
+    this.db.splice(index,1,item);
     this.dump();
   }
 

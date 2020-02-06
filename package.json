@@ -1,6 +1,6 @@
 {
   "name": "json-local-db",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "json格式内容本地存储",
   "typings": "declarations/index.d.ts",
   "main": "lib/index.js",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/creasy2010/json-local-db#readme",
   "dependencies": {
     "fs-extra": "^8.1.0",
+    "immer": "^5.3.4",
     "lodash": "^4.17.15",
     "uuid": "^3.4.0"
   },
