@@ -13,7 +13,7 @@ import {debounce} from  'lodash';
 import {v1} from 'uuid';
 
 
-export class JsonBaseDao<T=any>{
+export class JsonBase<T=any>{
   fileLoc: string;
   data:T;
 

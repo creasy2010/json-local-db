@@ -9,8 +9,23 @@ import {join} from "path";
  * @Date    2020/1/29
  **/
 
+let ConstProjectName=".demo";
 export const baseDir = join(
   process.env.HOME || process.env.USERPROFILE,
-  '.check-list',
+  ConstProjectName,
 );
+
+export function setProjectName(projectName:string){
+  ConstProjectName=projectName;
+}
+
+
+export function getBaseDir():string{
+  return join(
+    process.env.HOME || process.env.USERPROFILE,
+    ConstProjectName,
+  );
+}
+
+
 

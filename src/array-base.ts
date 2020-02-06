@@ -2,7 +2,7 @@ import {join} from 'path';
 import {writeJsonSync,readJSONSync,existsSync, ensureFile,ensureFileSync, ensureDir, readJSON} from "fs-extra";
 import {debounce} from  'lodash';
 import {v1} from 'uuid';
-import {baseDir} from  './const';
+import {getBaseDir} from './const';
 
 /**
  * @desc
@@ -13,13 +13,14 @@ import {baseDir} from  './const';
  * @Date    2020/1/10
  **/
 
-export class BaseDao<T extends IBase> {
+
+export class ArrayBase<T extends IBase> {
   fileLoc: string;
 
   db:T[];
 
   constructor(key: string) {
-    this.fileLoc = join(baseDir, key+".json");
+    this.fileLoc = join(getBaseDir(), key+".json");
     this.init();
   }
 

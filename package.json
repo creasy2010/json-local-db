@@ -2,7 +2,8 @@
   "name": "json-local-db",
   "version": "1.0.0",
   "description": "json格式内容本地存储",
-  "main": "index.js",
+  "typings": "declarations/index.d.ts",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/creasy2010/json-local-db/issues"
   },
-  "homepage": "https://github.com/creasy2010/json-local-db#readme"
+  "homepage": "https://github.com/creasy2010/json-local-db#readme",
+  "dependencies": {
+    "fs-extra": "^8.1.0",
+    "lodash": "^4.17.15",
+    "uuid": "^3.4.0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.149",
+    "@types/uuid": "^3.4.7"
+  }
 }
