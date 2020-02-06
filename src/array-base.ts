@@ -70,7 +70,6 @@ export class ArrayBase<T extends IBase> {
         item[updateItemKey] = updateItem[updateItemKey];
       }
     }
-    debugger;
     item.updateTime =Date.now();
     this.dump();
   }
