@@ -21,6 +21,7 @@ export class JsonBase<T=any>{
 
   constructor(key: string,defaultValue:T) {
     this.fileLoc = join(getBaseDir(), key+".json");
+     console.log(`从${this.fileLoc }读取配置信息`)
     this._defautValue=defaultValue;
     this.init();
   }

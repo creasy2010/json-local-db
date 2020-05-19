@@ -24,6 +24,7 @@ export class ArrayBase<T extends IBase> {
 
   constructor(key: string) {
     this.fileLoc = join(getBaseDir(), key+".json");
+    console.log(`从${this.fileLoc }读取配置信息`)
     this.init();
   }
 
