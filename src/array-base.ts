@@ -18,7 +18,7 @@ import produce from "immer"
 export class ArrayBase<T extends IBase> {
   fileLoc: string;
 
-  db:T[];
+  db:T[]=[];
 
 
 
